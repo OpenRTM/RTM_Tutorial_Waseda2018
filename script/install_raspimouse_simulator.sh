@@ -7,10 +7,14 @@ wget https://sourceforge.net/projects/opende/files/ODE/0.13/ode-0.13.tar.bz2
 tar -xf ode-0.13.tar.bz2
 cd ode-0.13/
 cd build
-premake4 --with-demos --platform=x64 --only-double --only-shared codeblocks
-cd codeblocks
-codeblocks --target=Release --rebuild ode.cbp
-codeblocks --target=Release --rebuild drawstuff.cbp
+#premake4 --with-demos --platform=x64 --only-double --only-shared codeblocks
+premake4 --with-demos --platform=x64 --only-double --only-shared gmake
+#cd codeblocks
+cd gmake
+#codeblocks --target=Release --rebuild ode.cbp
+#codeblocks --target=Release --rebuild drawstuff.cbp
+make config=release ode
+make config=release drawstuff
 
 #./configure --enable-release --with-x --enable-double-precision --with-libccd CFLAGS="-fPIC"
 #make
@@ -33,9 +37,9 @@ cp -r $workdir/ode-0.13/drawstuff ./
 
 
 cd $workdir
-wget https://raw.githubusercontent.com/Nobu19800/RTM_Tutorial_ROBOMECH2018/master/EXE/test.csv
-wget https://raw.githubusercontent.com/Nobu19800/RTM_Tutorial_ROBOMECH2018/master/EXE/rtc.conf
-wget https://raw.githubusercontent.com/Nobu19800/RTM_Tutorial_ROBOMECH2018/master/EXE/RaspberryPiMouseSimulator.conf
-cp test.csv $workdir/RasPiMouseSimulatorRTC/build/src
-cp rtc.conf $workdir/RasPiMouseSimulatorRTC/build/src
-cp RaspberryPiMouseSimulator.conf $workdir/RasPiMouseSimulatorRTC/build/src
+wget https://raw.githubusercontent.com/OpenRTM/RTM_Tutorial_Waseda2018/master/EXE/test.csv
+wget https://raw.githubusercontent.com/OpenRTM/RTM_Tutorial_Waseda2018/master/EXE/rtc.conf
+wget https://raw.githubusercontent.com/OpenRTM/RTM_Tutorial_Waseda2018/master/EXE/RaspberryPiMouseSimulator.conf
+cp test.csv $workdir/RasPiMouseSimulatorRTC/build/
+cp rtc.conf $workdir/RasPiMouseSimulatorRTC/build/
+cp RaspberryPiMouseSimulator.conf $workdir/RasPiMouseSimulatorRTC/build/

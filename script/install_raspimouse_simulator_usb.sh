@@ -7,10 +7,14 @@ echo $workdir
 #tar -xf ode-0.13.tar.bz2
 cd ode-0.13/
 cd build
-premake4 --with-demos --platform=x64 --only-double --only-shared codeblocks
-cd codeblocks
-codeblocks --target=Release --rebuild ode.cbp
-codeblocks --target=Release --rebuild drawstuff.cbp
+#premake4 --with-demos --platform=x64 --only-double --only-shared codeblocks
+premake4 --with-demos --platform=x64 --only-double --only-shared gmake
+#cd codeblocks
+cd gmake
+#codeblocks --target=Release --rebuild ode.cbp
+#codeblocks --target=Release --rebuild drawstuff.cbp
+make config=release ode
+make config=release drawstuff
 
 #./configure --enable-release --with-x --enable-double-precision --with-libccd CFLAGS="-fPIC"
 #make
@@ -32,6 +36,6 @@ make
 cp -r $workdir/ode-0.13/drawstuff $workdir/RasPiMouseSimulatorRTC/build/src
 
 
-cp $workdir/EXE/test.csv $workdir/RasPiMouseSimulatorRTC/build/src
-cp $workdir/EXE/rtc.conf $workdir/RasPiMouseSimulatorRTC/build/src
-cp $workdir/EXE/RaspberryPiMouseSimulator.conf $workdir/RasPiMouseSimulatorRTC/build/src
+cp $workdir/../EXE/test.csv $workdir/RasPiMouseSimulatorRTC/build/src
+cp $workdir/../EXE/rtc.conf $workdir/RasPiMouseSimulatorRTC/build/src
+cp $workdir/../EXE/RaspberryPiMouseSimulator.conf $workdir/RasPiMouseSimulatorRTC/build/src
